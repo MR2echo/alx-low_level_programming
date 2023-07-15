@@ -6,13 +6,11 @@
  * starting from 0, followed by a new line.
  * Return: 0
  */
-
-
 int main(void)
 {
 	int num = 0;
 
-	while (num <= 10)
+	while (num < 10)
 	{
 		putchar(48 + num);
 		num++;
