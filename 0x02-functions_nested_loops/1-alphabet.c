@@ -1,15 +1,19 @@
 #include "main.h"
+
 /**
- * print_alphabet - Make the alphabet
+ * print_alphabet - prints alphabets in alphabetical order
  *
- * Return: void
+ * Return:No value to return
  */
 void print_alphabet(void)
 {
-	char ch;
-	for(ch = 'a'; ch <= 'Z'; ch++)
+	char letters;
+
+	letters = 'a';
+	while (letters <= 'z')
 	{
-		_putchar(ch);
-		_putchar('\n');
+		_putchar(letters);
+		letters++;
 	}
+	_putchar('\n');
 }
