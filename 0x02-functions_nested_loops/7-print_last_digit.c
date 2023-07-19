@@ -1,18 +1,17 @@
 #include "main.h"
 #include <stdio.h>
 
-
 /**
  * print_last_digit - Prints last digit of any given number r
  * @r: Any given number
  *
  * Return: Returns last digit of any number on success
  */
-int print_last_digit(int x)
+int print_last_digit(int r)
 {
 	int last;
 
-	last = x % 10;
+	last = r % 10;
 
 	if (last < 0)
 	{
