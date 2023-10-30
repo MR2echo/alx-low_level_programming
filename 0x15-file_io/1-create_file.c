@@ -1,41 +1,38 @@
 #include "main.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: the string whose length to check
+ * create_file - creates a file
+ * @filename: filename.
+ * @text_content: content writed in the file.
  *
- * Return: integer length of string
+ * Return: 1 if it success. -1 if it fails.
  */
-int _strlen(char *s)
-{
-	int i = 0;
-
-	if(!s)
-		return (0);
-	while (*s++)
-		i++;
-	return (i);
-}
-
-/**
- * create_file - create a file 
- * @filename: name of file to create
- * @texte_content: text to write
- *
- * Return: 1 on success 0 on failure
- */
-
 int create_file(const char *filename, char *text_content)
 {
 	int fd;
-	ssize_t byt = 0, len = _strlen(text_content);
+	int nletters;
+	int rwr;
 
-	if(!filename)
+	if (!filename)
 		return (-1);
-	fd = open(filename, O_WRONLY | O_CREATE | O_TRUNC, S_IRUSR | S_IWUSR);
+
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+
 	if (fd == -1)
 		return (-1);
-	if (len)
-		byt = write(fd, text_content, len);
-	return (byt == len ? 1 : -1);
+
+	if (!text_content)
+		text_content = "";
+
+	for (nletters = 0; text_content[nletters]; nletters++)
+		;
+
+	rwr = write(fd, text_content, nletters);
+
+	if (rwr == -1)
+		return (-1);
+
+	close(fd);
+
+	return (1);
 }
